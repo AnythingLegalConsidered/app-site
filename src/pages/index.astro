@@ -25,6 +25,20 @@ import Footer from '../components/Footer.astro';
     </p>
 
     <p>
+      Mon projet principal est <a href="/projets/datacommune/">DataCommune</a>, un agrégateur
+      de données publiques en ligne : 27 jeux de données réunis dans une API unique,
+      37,5 millions de lignes sur la Loire-Atlantique et la Vendée. Je le conçois et
+      l’exploite seul : 21 pipelines d’ingestion contrôlés avant publication, une API
+      hébergée sur mon homelab, un déploiement continu dont le retour arrière est testé.
+      Je fournis les plans, des agents LLM se répartissent les tâches.
+    </p>
+
+    <figure class="case-cover home-figure">
+      <a href="/projets/datacommune/"><img src="/projects/datacommune-homepage.png" alt="Page d’accueil de DataCommune" width="1280" height="577" decoding="async" /></a>
+      <figcaption>DataCommune, en ligne sur datacommune.fr.</figcaption>
+    </figure>
+
+    <p>
       En support, une grande partie du temps part dans des tâches répétitives. J’ai beaucoup
       réfléchi à ce qui peut être automatisé, et je pense que l’IA va devenir un outil courant
       dans ces métiers. Mon objectif aujourd’hui : apprendre à automatiser des processus
@@ -43,19 +57,12 @@ import Footer from '../components/Footer.astro';
     </p>
 
     <p>
-      <a href="/projets/datacommune/">DataCommune</a>, mon agrégateur de données publiques,
-      est construit de cette façon : je fournis les plans, des agents LLM se répartissent
-      les tâches.
-    </p>
-
-    <p>
       Mon homelab me sert de terrain d’essai : treize conteneurs LXC décrits avec Terraform
       et configurés avec Ansible, des sauvegardes 3-2-1 dont je teste la restauration, du SSO
       et de l’observabilité.
     </p>
 
     <p>
-      J’ai aussi monté <a href="/projets/hexalith/">Hexalith</a>, un lab GitOps documenté.
       Le détail est dans <a href="/projets/">mes projets</a>, le parcours complet
       sur <a href="/cv/">mon CV</a>.
     </p>

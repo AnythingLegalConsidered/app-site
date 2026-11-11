@@ -41,48 +41,9 @@ export const projects = [
     external: { href: 'https://datacommune.fr', label: 'Ouvrir DataCommune' },
   },
   {
-    slug: 'hexalith',
-    name: 'Hexalith',
-    number: '02',
-    status: 'Lab documenté',
-    meta: 'GitOps & IAM · 2026',
-    summary:
-      'Un lab Proxmox monté dans le cadre de ma formation, pour pratiquer l’IaC, le SSO, l’observabilité et la restauration après incident.',
-    outcome:
-      'Six LXC provisionnés. J’ai exécuté et documenté les scénarios SSO, cycle de vie des comptes, alerte et restauration.',
-    tags: ['Terraform', 'Ansible', 'Authentik', 'Grafana', 'GitHub Actions'],
-    facts: [
-      { value: '27', label: 'PR fusionnées' },
-      { value: '6', label: 'LXC provisionnés' },
-      { value: '15–133 s', label: 'restauration mesurée' },
-    ],
-    challenge:
-      'Construire une chaîne d’infrastructure complète et vérifiable, alors que mon quotidien chez Equans était centré sur le support poste.',
-    work: [
-      'Terraform provisionne les LXC sur Proxmox, Ansible configure les services. Le tout est appliqué depuis un runner GitHub Actions auto-hébergé.',
-      'SSO validé en SAML avec GLPI et en OpenID Connect avec Grafana.',
-      'Onboarding automatisé : création d’identité, ticket ITSM, notification, puis désactivation lors de l’offboarding.',
-      'Supervision Prometheus, Loki et Grafana. J’ai provoqué un incident volontaire : alerte reçue, puis service restauré.',
-    ],
-    results: [
-      '10 sondes sur 10 et 18 cibles sur 18 disponibles au dernier contrôle.',
-      'Alerte reçue après environ 102 secondes, résolution détectée environ 61 secondes après reprise.',
-      'Restauration après destruction volontaire : environ 15 s pour n8n, 133 s pour Authentik. Intégrité vérifiée après chaque test.',
-    ],
-    limits: [
-      'Mesures prises sur un lab hébergé sur un hôte existant, pas en production.',
-      'Le budget et le planning sur treize semaines viennent du scénario d’école, pas d’un déploiement client.',
-    ],
-    image: '/projects/hexalith-gitops.png',
-    imageAlt: 'Pipeline Terraform Hexalith réussi dans GitHub Actions',
-    gallery: [
-      { src: '/projects/hexalith-sso.png', alt: 'Connexion GLPI proposée par le fournisseur d’identité Authentik' },
-    ],
-  },
-  {
     slug: 'homelab',
     name: 'Homelab',
-    number: '03',
+    number: '02',
     status: 'Exploité 24/7',
     meta: 'Infrastructure personnelle · 2024 →',
     summary:
@@ -116,7 +77,7 @@ export const projects = [
   {
     slug: 'automatisation-ad',
     name: 'Automatisation AD',
-    number: '04',
+    number: '03',
     status: 'Utilisé en entreprise',
     meta: 'PowerShell · 2025',
     summary:
@@ -143,6 +104,45 @@ export const projects = [
     limits: [
       'Le code et les données restent privés car ils appartiennent au contexte d’entreprise.',
       'L’outil assiste la décision ; il ne remplace ni la validation humaine ni les contrôles natifs.',
+    ],
+  },
+  {
+    slug: 'hexalith',
+    name: 'Hexalith',
+    number: '04',
+    status: 'Lab documenté',
+    meta: 'GitOps & IAM · 2026',
+    summary:
+      'Un lab Proxmox monté dans le cadre de ma formation, pour pratiquer l’IaC, le SSO, l’observabilité et la restauration après incident.',
+    outcome:
+      'Six LXC provisionnés. J’ai exécuté et documenté les scénarios SSO, cycle de vie des comptes, alerte et restauration.',
+    tags: ['Terraform', 'Ansible', 'Authentik', 'Grafana', 'GitHub Actions'],
+    facts: [
+      { value: '27', label: 'PR fusionnées' },
+      { value: '6', label: 'LXC provisionnés' },
+      { value: '15–133 s', label: 'restauration mesurée' },
+    ],
+    challenge:
+      'Construire une chaîne d’infrastructure complète et vérifiable, alors que mon quotidien chez Equans était centré sur le support poste.',
+    work: [
+      'Terraform provisionne les LXC sur Proxmox, Ansible configure les services. Le tout est appliqué depuis un runner GitHub Actions auto-hébergé.',
+      'SSO validé en SAML avec GLPI et en OpenID Connect avec Grafana.',
+      'Onboarding automatisé : création d’identité, ticket ITSM, notification, puis désactivation lors de l’offboarding.',
+      'Supervision Prometheus, Loki et Grafana. J’ai provoqué un incident volontaire : alerte reçue, puis service restauré.',
+    ],
+    results: [
+      '10 sondes sur 10 et 18 cibles sur 18 disponibles au dernier contrôle.',
+      'Alerte reçue après environ 102 secondes, résolution détectée environ 61 secondes après reprise.',
+      'Restauration après destruction volontaire : environ 15 s pour n8n, 133 s pour Authentik. Intégrité vérifiée après chaque test.',
+    ],
+    limits: [
+      'Mesures prises sur un lab hébergé sur un hôte existant, pas en production.',
+      'Le budget et le planning sur treize semaines viennent du scénario d’école, pas d’un déploiement client.',
+    ],
+    image: '/projects/hexalith-gitops.png',
+    imageAlt: 'Pipeline Terraform Hexalith réussi dans GitHub Actions',
+    gallery: [
+      { src: '/projects/hexalith-sso.png', alt: 'Connexion GLPI proposée par le fournisseur d’identité Authentik' },
     ],
   },
 ];
