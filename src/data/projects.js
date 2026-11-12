@@ -8,28 +8,27 @@ export const projects = [
     summary:
       'Un produit data en ligne : ingestion de sources publiques, API FastAPI, frontend SvelteKit et déploiement continu. Je le conçois et l’exploite seul.',
     outcome:
-      '27 jeux de données réunis dans une API unique. L’instance auditée contient 37,5 millions de lignes et expose 85 chemins OpenAPI sur deux départements.',
+      'Chaque adresse et chaque commune de France décrite à partir de 40 sources publiques, chaque chiffre avec sa source, sa date et ses limites.',
     tags: ['FastAPI', 'PostGIS', 'SvelteKit', 'ETL', 'GitHub Actions'],
     facts: [
-      { value: '27', label: 'jeux de données' },
-      { value: '37,5 M', label: 'lignes auditées' },
-      { value: '85', label: 'chemins OpenAPI' },
+      { value: '40', label: 'sources publiques' },
+      { value: 'France', label: 'entière couverte' },
+      { value: 'AGPL-3.0', label: 'licence du code' },
     ],
     challenge:
       'Réunir des sources publiques hétérogènes sans masquer leurs limites : millésimes, couverture, schémas et volumes varient fortement selon les producteurs.',
     work: [
-      '21 pipelines ETL. Chaque pipeline vérifie le volume, le schéma et la couverture avant mise en production.',
+      '23 modules d’import. Chacun vérifie le volume, le schéma et la couverture avant mise en production.',
       'API FastAPI sur PostgreSQL/PostGIS, avec authentification, quotas et erreurs normalisées.',
-      'Frontend SvelteKit 5 déployé sur Cloudflare Workers ; API conteneurisée sur mon homelab et publiée par tunnel sortant.',
+      'Site SvelteKit et API auto-hébergés sur mon Proxmox (base de travail et site public séparés), publiés par Cloudflare Tunnel.',
       'CI/CD GitHub Actions sur runner auto-hébergé. Les images sont versionnées et le retour arrière est testé.',
     ],
     results: [
-      'Instance publique active sur la Loire-Atlantique et la Vendée.',
-      'Matrice de qualité documentée pour les 21 pipelines et 6 proxys de données.',
+      'Site public en ligne sur toute la France, sur datacommune.fr.',
+      'Chaque source affiche sa licence, sa période, sa date d’import et ses limites.',
       'Fiches Commune rendues côté serveur et indexables par les moteurs de recherche.',
     ],
     limits: [
-      'Le périmètre France entière est une cible d’architecture, pas le volume de la démo publique.',
       'La facturation est volontairement désactivée tant que la qualité des données et l’usage terrain ne sont pas validés.',
     ],
     image: '/projects/datacommune-homepage.png',
@@ -49,10 +48,10 @@ export const projects = [
     summary:
       'Mon infrastructure personnelle : des services migrés progressivement vers de l’IaC, avec des sauvegardes testées.',
     outcome:
-      'Treize LXC sont décrits par Terraform et configurés avec Ansible. Les données critiques suivent une stratégie 3-2-1 dont la restauration est testée.',
+      'Deux nœuds Proxmox et une vingtaine de LXC, dont quatorze décrits par Terraform et configurés avec Ansible. Les données critiques suivent une stratégie 3-2-1 dont la restauration est testée.',
     tags: ['Proxmox', 'Terraform', 'Ansible', 'Tailscale', 'SOPS'],
     facts: [
-      { value: '13', label: 'LXC en IaC' },
+      { value: '14', label: 'LXC en IaC' },
       { value: '3-2-1', label: 'sauvegardes' },
       { value: '24/7', label: 'exploitation' },
     ],
@@ -65,7 +64,7 @@ export const projects = [
       'Observabilité centralisée, durcissement SSH et secrets chiffrés avec SOPS/age.',
     ],
     results: [
-      'Treize conteneurs déclarés en IaC, protégés contre la suppression accidentelle.',
+      'Quatorze conteneurs déclarés en IaC, protégés contre la suppression accidentelle.',
       'Sauvegardes locales et hors site ; exercices de restauration documentés.',
       'Bascule LAN-only en cours, par vagues, avec contrôles fonctionnels avant chaque étape.',
     ],
@@ -87,7 +86,7 @@ export const projects = [
     tags: ['PowerShell', 'Active Directory', 'IAM', 'Guardrails'],
     facts: [
       { value: '3', label: 'outils ciblés' },
-      { value: '25 000+', label: 'postes dans l’environnement' },
+      { value: '21 000+', label: 'postes dans l’environnement' },
       { value: '100 %', label: 'simulation avant écriture' },
     ],
     challenge:
