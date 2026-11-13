@@ -2,75 +2,131 @@
 import Base from '../layouts/Base.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { projects } from '../data/projects.js';
+
+const featured = projects.find((p) => p.slug === 'datacommune');
+const others = projects.filter((p) => ['homelab', 'automatisation-ad'].includes(p.slug));
+
+// One line per number: a recruiter should get the profile from this strip alone.
+const keyFigures = [
+  { value: '21 000+', label: 'postes dans le parc géré chez Equans' },
+  { value: '40', label: 'sources publiques réunies dans DataCommune' },
+  { value: '14', label: 'conteneurs décrits en Terraform et Ansible' },
+  { value: '3', label: 'outils PowerShell utilisés en entreprise' },
+];
+
+const path = [
+  { when: '09/2025 – 09/2026', what: 'Administrateur systèmes & réseaux', where: 'Equans – Axima · identités AD, Entra ID, Intune, PowerShell' },
+  { when: '01/2024 – 07/2025', what: 'Technicien support N2', where: 'Equans – Axima · parc Intune, Microsoft 365, incidents escaladés' },
+  { when: '2022 – 2023', what: 'Support N1 et service desk', where: 'DCS Easyware, Helpline' },
+  { when: '2025 – 2026', what: 'BAC+3 Administration systèmes, réseaux & BDD', where: 'EPSI Nantes · titre RNCP niveau 6' },
+];
+
+const skills = ['Active Directory', 'Entra ID', 'Intune', 'Microsoft 365', 'PowerShell', 'Proxmox', 'Terraform', 'Ansible', 'Linux', 'Python', 'Grafana / Prometheus', 'GitHub Actions'];
 ---
 
 <Base
-  title={'Ianis Puichaud — Administrateur Systèmes & Réseaux'}
-  description="Administrateur systèmes et réseaux à Nantes. Support N2, identités Microsoft, automatisation des processus de support et IA en entreprise."
+  title={'Ianis Puichaud — Administrateur Systèmes & Réseaux à Nantes'}
+  description="Administrateur systèmes et réseaux à Nantes : support N2 et identités Microsoft chez Equans, infrastructure Proxmox en Terraform et Ansible, créateur de DataCommune."
 >
   <a class="skip-link" href="#main">Aller au contenu</a>
   <Header />
-  <main id="main" class="wrap prose">
-    <header class="home-head">
-      <h1 class="page-title">Ianis Puichaud</h1>
-      <p class="lede">Administrateur systèmes et réseaux à Nantes. Support N2, identités Microsoft, automatisation. Disponible immédiatement.</p>
-    </header>
+  <main id="main" class="home">
+    <section class="hero wrap-wide" aria-labelledby="hero-title">
+      <p class="hero-kicker"><span class="dot" aria-hidden="true"></span>Nantes · disponible immédiatement</p>
+      <h1 id="hero-title" class="hero-title">Ianis Puichaud</h1>
+      <p class="hero-role">Administrateur systèmes &amp; réseaux</p>
+      <p class="hero-lede">
+        Près de 3 ans de support N2 et d’administration des identités Microsoft chez Equans.
+        À côté, je conçois et j’exploite seul <strong>DataCommune</strong>, une plateforme
+        de données publiques en ligne.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="/projets/datacommune/">Voir DataCommune</a>
+        <a class="btn" href="/cv/">Mon CV</a>
+        <a class="btn btn-ghost" href="mailto:pro@puichaud.com">pro@puichaud.com</a>
+      </div>
+    </section>
 
-    <p>
-      J’ai travaillé chez <strong>Equans</strong> en support de niveau 2, sur un parc de plus
-      de 21&nbsp;000 postes Windows : comptes Active Directory et Entra ID, sécurité des postes,
-      incidents escaladés par le niveau 1. À cette échelle, chaque modification doit rester
-      contrôlée et réversible. Depuis, je cherche un poste de support N2 ou d’administrateur
-      systèmes junior à Nantes.
-    </p>
+    <section class="wrap-wide" aria-label="Chiffres clés">
+      <dl class="figures">
+        {keyFigures.map((f) => (
+          <div>
+            <dt>{f.value}</dt>
+            <dd>{f.label}</dd>
+          </div>
+        ))}
+      </dl>
+    </section>
 
-    <p>
-      Mon projet principal est <a href="/projets/datacommune/">DataCommune</a>, un agrégateur
-      de données publiques en ligne : chaque adresse et chaque commune de France décrite
-      à partir de 40 sources publiques, chaque chiffre avec sa source et sa date. Je le
-      conçois et l’exploite seul : imports contrôlés avant publication, un site et une API
-      hébergés sur mon homelab, une intégration continue qui teste chaque changement.
-      Je fournis les plans, des agents LLM se répartissent les tâches.
-    </p>
+    {featured && (
+      <section class="feature wrap-wide" aria-labelledby="feature-title">
+        <p class="eyebrow">Projet phare</p>
+        <div class="feature-grid">
+          <a class="feature-shot" href={`/projets/${featured.slug}/`}>
+            <img src={featured.image} alt={featured.imageAlt} width="1280" height="577" decoding="async" />
+          </a>
+          <div class="feature-body">
+            <h2 id="feature-title">{featured.name} <span class="badge">{featured.status}</span></h2>
+            <p class="feature-lede">
+              Chaque adresse et chaque commune de France décrite à partir de 40 sources publiques,
+              chaque chiffre avec sa source et sa date.
+            </p>
+            <ul class="feature-points">
+              <li><strong>23 modules d’import</strong> qui vérifient volume, schéma et couverture avant publication.</li>
+              <li><strong>API FastAPI</strong> sur PostgreSQL/PostGIS, site SvelteKit indexable.</li>
+              <li><strong>Auto-hébergé</strong> sur mon Proxmox, CI/CD GitHub Actions avec retour arrière testé.</li>
+            </ul>
+            <div class="feature-links">
+              <a class="btn btn-primary" href={featured.external.href} target="_blank" rel="noopener">Ouvrir datacommune.fr</a>
+              <a class="text-link" href={`/projets/${featured.slug}/`}>Lire l’étude de cas →</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    )}
 
-    <figure class="case-cover home-figure">
-      <a href="/projets/datacommune/"><img src="/projects/datacommune-homepage.png" alt="Page d’accueil de DataCommune" width="1280" height="577" decoding="async" /></a>
-      <figcaption>DataCommune, en ligne sur datacommune.fr.</figcaption>
-    </figure>
+    <section class="wrap-wide" aria-labelledby="others-title">
+      <h2 id="others-title" class="eyebrow">Autres réalisations</h2>
+      <div class="cards">
+        {others.map((p) => (
+          <a class="card" href={`/projets/${p.slug}/`}>
+            <span class="card-status">{p.status}</span>
+            <h3>{p.name}</h3>
+            <p>{p.summary}</p>
+            <span class="card-tags">{p.tags.slice(0, 4).join(' · ')}</span>
+          </a>
+        ))}
+      </div>
+      <a class="text-link" href="/projets/">Tous les projets →</a>
+    </section>
 
-    <p>
-      En support, une grande partie du temps part dans des tâches répétitives. J’ai beaucoup
-      réfléchi à ce qui peut être automatisé, et je pense que l’IA va devenir un outil courant
-      dans ces métiers. Mon objectif aujourd’hui : apprendre à automatiser des processus
-      de support informatique, d’infogérance et de sécurité en entreprise.
-    </p>
+    <section class="wrap-wide two-col" aria-label="Parcours et compétences">
+      <div>
+        <h2 class="eyebrow">Parcours</h2>
+        <ol class="path">
+          {path.map((s) => (
+            <li>
+              <span class="path-when">{s.when}</span>
+              <span class="path-what">{s.what}</span>
+              <span class="path-where">{s.where}</span>
+            </li>
+          ))}
+        </ol>
+        <a class="text-link" href="/cv/">Parcours complet sur mon CV →</a>
+      </div>
+      <div>
+        <h2 class="eyebrow">Compétences</h2>
+        <ul class="chips">
+          {skills.map((s) => <li>{s}</li>)}
+        </ul>
+      </div>
+    </section>
 
-    <p>
-      J’ai commencé chez Equans,
-      avec <a href="/projets/automatisation-ad/">trois outils PowerShell</a> pour les
-      opérations Active Directory répétitives : simulation et sauvegarde avant chaque écriture.
-    </p>
-
-    <p>
-      Je me forme sur le fonctionnement des modèles (embeddings, RAG), sur leur hébergement
-      (quantification, poids, performance) et sur les outils agentiques.
-    </p>
-
-    <p>
-      Mon homelab me sert de terrain d’essai : deux nœuds Proxmox et une vingtaine de
-      conteneurs LXC, dont quatorze décrits avec Terraform et configurés avec Ansible, des sauvegardes 3-2-1 dont je teste la restauration, du SSO
-      et de l’observabilité.
-    </p>
-
-    <p>
-      Le détail est dans <a href="/projets/">mes projets</a>, le parcours complet
-      sur <a href="/cv/">mon CV</a>.
-    </p>
-
-    <p>
-      Pour un poste, une mission courte ou un simple échange,
-      écrivez-moi à <a href="mailto:pro@puichaud.com">pro@puichaud.com</a>.
-    </p>
+    <section class="wrap-wide contact" aria-labelledby="contact-title">
+      <h2 id="contact-title">Un poste, une mission courte ou un échange ?</h2>
+      <a class="btn btn-primary" href="mailto:pro@puichaud.com">Écrire à pro@puichaud.com</a>
+    </section>
   </main>
   <Footer />
 </Base>
