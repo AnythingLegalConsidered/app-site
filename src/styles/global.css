@@ -305,10 +305,10 @@ figcaption { margin-top: 8px; color: var(--muted); font: 400 10px/1.5 var(--mono
 
 /* ---- Home: scannable landing (hero, key figures, featured project) ---- */
 .wrap-wide { width: min(100% - 48px, 980px); margin-inline: auto; }
-.home section { margin-bottom: 64px; }
+.landing section { margin-bottom: 64px; }
 /* Header and footer follow the wider home column so everything lines up. */
-body:has(main.home) .site-header .wrap,
-body:has(main.home) .site-footer .wrap { width: min(100% - 48px, 980px); }
+body:has(main.landing) .site-header .wrap,
+body:has(main.landing) .site-footer .wrap { width: min(100% - 48px, 980px); }
 
 .hero { padding-top: 8px; }
 .hero-kicker { display: flex; align-items: center; gap: 8px; margin: 0 0 14px; color: var(--accent-dark); font: 600 13px/1.4 var(--sans); letter-spacing: .02em; }
@@ -368,9 +368,9 @@ body:has(main.home) .site-footer .wrap { width: min(100% - 48px, 980px); }
 
 @media (max-width: 620px) {
   .wrap-wide,
-  body:has(main.home) .site-header .wrap,
-  body:has(main.home) .site-footer .wrap { width: min(100% - 36px, 980px); }
-  .home section { margin-bottom: 48px; }
+  body:has(main.landing) .site-header .wrap,
+  body:has(main.landing) .site-footer .wrap { width: min(100% - 36px, 980px); }
+  .landing section { margin-bottom: 48px; }
   .hero-lede { font-size: 19px; }
   .cards { grid-template-columns: 1fr; }
   .figures dt { font-size: 27px; }
