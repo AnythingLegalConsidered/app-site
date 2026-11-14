@@ -367,7 +367,9 @@ body:has(main.home) .site-footer .wrap { width: min(100% - 48px, 980px); }
 }
 
 @media (max-width: 620px) {
-  .wrap-wide { width: min(100% - 36px, 980px); }
+  .wrap-wide,
+  body:has(main.home) .site-header .wrap,
+  body:has(main.home) .site-footer .wrap { width: min(100% - 36px, 980px); }
   .home section { margin-bottom: 48px; }
   .hero-lede { font-size: 19px; }
   .cards { grid-template-columns: 1fr; }
