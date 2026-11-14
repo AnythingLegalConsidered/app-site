@@ -13,16 +13,30 @@ import Footer from '../components/Footer.astro';
   <main id="main" class="wrap prose">
     <header class="home-head">
       <h1 class="page-title">Ianis Puichaud</h1>
-      <p class="lede">Administrateur systèmes et réseaux à Nantes. Support N2, identités Microsoft, automatisation.</p>
+      <p class="lede">Administrateur systèmes et réseaux à Nantes. Support N2, identités Microsoft, automatisation. Disponible immédiatement.</p>
     </header>
 
     <p>
       J’ai travaillé chez <strong>Equans</strong> en support de niveau 2, sur un parc de plus
-      de 25&nbsp;000 postes Windows : comptes Active Directory et Entra ID, sécurité des postes,
+      de 21&nbsp;000 postes Windows : comptes Active Directory et Entra ID, sécurité des postes,
       incidents escaladés par le niveau 1. À cette échelle, chaque modification doit rester
       contrôlée et réversible. Depuis, je cherche un poste de support N2 ou d’administrateur
       systèmes junior à Nantes.
     </p>
+
+    <p>
+      Mon projet principal est <a href="/projets/datacommune/">DataCommune</a>, un agrégateur
+      de données publiques en ligne : chaque adresse et chaque commune de France décrite
+      à partir de 40 sources publiques, chaque chiffre avec sa source et sa date. Je le
+      conçois et l’exploite seul : imports contrôlés avant publication, un site et une API
+      hébergés sur mon homelab, une intégration continue qui teste chaque changement.
+      Je fournis les plans, des agents LLM se répartissent les tâches.
+    </p>
+
+    <figure class="case-cover home-figure">
+      <a href="/projets/datacommune/"><img src="/projects/datacommune-homepage.png" alt="Page d’accueil de DataCommune" width="1280" height="577" decoding="async" /></a>
+      <figcaption>DataCommune, en ligne sur datacommune.fr.</figcaption>
+    </figure>
 
     <p>
       En support, une grande partie du temps part dans des tâches répétitives. J’ai beaucoup
@@ -32,26 +46,30 @@ import Footer from '../components/Footer.astro';
     </p>
 
     <p>
+      J’ai commencé chez Equans,
+      avec <a href="/projets/automatisation-ad/">trois outils PowerShell</a> pour les
+      opérations Active Directory répétitives : simulation et sauvegarde avant chaque écriture.
+    </p>
+
+    <p>
       Je me forme sur le fonctionnement des modèles (embeddings, RAG), sur leur hébergement
       (quantification, poids, performance) et sur les outils agentiques.
     </p>
 
     <p>
-      <a href="/projets/datacommune/">DataCommune</a>, mon agrégateur de données publiques,
-      est construit de cette façon : je fournis les plans, des agents LLM se répartissent
-      les tâches.
-    </p>
-
-    <p>
-      Mon homelab me sert de terrain d’essai : treize conteneurs LXC décrits avec Terraform
-      et configurés avec Ansible, des sauvegardes 3-2-1 dont je teste la restauration, du SSO
+      Mon homelab me sert de terrain d’essai : deux nœuds Proxmox et une vingtaine de
+      conteneurs LXC, dont quatorze décrits avec Terraform et configurés avec Ansible, des sauvegardes 3-2-1 dont je teste la restauration, du SSO
       et de l’observabilité.
     </p>
 
     <p>
-      J’ai aussi monté <a href="/projets/hexalith/">Hexalith</a>, un lab GitOps documenté.
       Le détail est dans <a href="/projets/">mes projets</a>, le parcours complet
       sur <a href="/cv/">mon CV</a>.
+    </p>
+
+    <p>
+      Pour un poste, une mission courte ou un simple échange,
+      écrivez-moi à <a href="mailto:pro@puichaud.com">pro@puichaud.com</a>.
     </p>
   </main>
   <Footer />

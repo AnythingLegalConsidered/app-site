@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { projects } from '../data/projects.js';
 ---
 
 <Base
@@ -14,7 +15,7 @@ import Footer from '../components/Footer.astro';
   <main id="main" class="wrap">
     <header class="resume-head">
       <h1 class="page-title">Ianis Puichaud</h1>
-      <p class="lede">Administrateur Systèmes &amp; Réseaux · Nantes</p>
+      <p class="lede">Administrateur Systèmes &amp; Réseaux · Nantes · Disponible immédiatement</p>
       <p class="coords">
         <a href="mailto:pro@puichaud.com">pro@puichaud.com</a> ·
         <a href="/cv.pdf" target="_blank" rel="noopener">CV PDF</a> ·
@@ -46,22 +47,22 @@ import Footer from '../components/Footer.astro';
       <h2 class="section-label">Expérience</h2>
       <details class="entry" open>
         <summary>
-          <span class="entry-title">Administrateur Systèmes &amp; Réseaux</span>
-          <span class="entry-meta">Equans · 09/2025 – 09/2026 · Nantes</span>
+          <span class="entry-title">Administrateur Systèmes &amp; Réseaux (apprentissage)</span>
+          <span class="entry-meta">Equans – Axima · 09/2025 – 09/2026 · Nantes</span>
         </summary>
         <div class="entry-body">
           <ul>
             <li>Gestion des identités Active Directory et Entra ID.</li>
-            <li>Support de niveau 2 sur un parc de plus de 25&nbsp;000 postes.</li>
+            <li>Support de niveau 2 sur un parc de plus de 21&nbsp;000 postes.</li>
             <li>Sécurité du poste, onboarding et masterisation.</li>
-            <li>Automatisation PowerShell avec simulation et contrôles avant écriture.</li>
+            <li><a href="/projets/automatisation-ad/">Trois outils PowerShell</a> pour les opérations Active Directory répétitives, avec simulation et sauvegarde avant écriture.</li>
           </ul>
         </div>
       </details>
       <details class="entry" open>
         <summary>
           <span class="entry-title">Technicien Support N2</span>
-          <span class="entry-meta">Equans – Axima · 01/2024 – 08/2025 · Nantes</span>
+          <span class="entry-meta">Equans – Axima · Intérim (Expectra) · 01/2024 – 07/2025 · Nantes</span>
         </summary>
         <div class="entry-body">
           <p>Résolution d’incidents Windows, Microsoft 365, Teams, SharePoint, Intune, applications métier et accès SAP.</p>
@@ -69,11 +70,20 @@ import Footer from '../components/Footer.astro';
       </details>
       <details class="entry" open>
         <summary>
-          <span class="entry-title">Service Desk &amp; Support N1</span>
-          <span class="entry-meta">Helpline, puis DCS Easyware · 10/2022 – 10/2023 · Nantes</span>
+          <span class="entry-title">Technicien Support N1</span>
+          <span class="entry-meta">DCS Easyware · 06/2023 – 10/2023 · Orvault, client Nantes Métropole</span>
         </summary>
         <div class="entry-body">
-          <p>Diagnostic, résolution de premier niveau et escalade des incidents complexes, au contact direct des utilisateurs.</p>
+          <p>Diagnostic, résolution de premier niveau et escalade qualifiée vers les équipes N2.</p>
+        </div>
+      </details>
+      <details class="entry" open>
+        <summary>
+          <span class="entry-title">Agent Service Desk</span>
+          <span class="entry-meta">Helpline · 10/2022 – 03/2023 · Nantes, client AREAS</span>
+        </summary>
+        <div class="entry-body">
+          <p>Support téléphonique, diagnostic de premier niveau, dispatching et suivi des tickets.</p>
         </div>
       </details>
     </section>
@@ -89,6 +99,18 @@ import Footer from '../components/Footer.astro';
           <p>Administration systèmes et réseaux, cloud, automatisation, sécurité et conduite de projets d’infrastructure.</p>
         </div>
       </details>
+    </section>
+
+    <section class="resume-section">
+      <h2 class="section-label">Projets</h2>
+      {projects.filter((project) => project.slug !== 'automatisation-ad').map((project) => (
+        <p class="skill-line"><strong><a href={`/projets/${project.slug}/`}>{project.name}</a> :</strong> {project.outcome}</p>
+      ))}
+    </section>
+
+    <section class="resume-section">
+      <h2 class="section-label">Langues</h2>
+      <p class="skill-line">Français (langue maternelle), anglais B2.</p>
     </section>
   </main>
   <Footer />

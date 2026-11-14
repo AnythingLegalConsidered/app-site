@@ -8,28 +8,27 @@ export const projects = [
     summary:
       'Un produit data en ligne : ingestion de sources publiques, API FastAPI, frontend SvelteKit et déploiement continu. Je le conçois et l’exploite seul.',
     outcome:
-      '27 jeux de données réunis dans une API unique. L’instance auditée contient 37,5 millions de lignes et expose 85 chemins OpenAPI sur deux départements.',
+      'Chaque adresse et chaque commune de France décrite à partir de 40 sources publiques, chaque chiffre avec sa source, sa date et ses limites.',
     tags: ['FastAPI', 'PostGIS', 'SvelteKit', 'ETL', 'GitHub Actions'],
     facts: [
-      { value: '27', label: 'jeux de données' },
-      { value: '37,5 M', label: 'lignes auditées' },
-      { value: '85', label: 'chemins OpenAPI' },
+      { value: '40', label: 'sources publiques' },
+      { value: 'France', label: 'entière couverte' },
+      { value: 'AGPL-3.0', label: 'licence du code' },
     ],
     challenge:
       'Réunir des sources publiques hétérogènes sans masquer leurs limites : millésimes, couverture, schémas et volumes varient fortement selon les producteurs.',
     work: [
-      '21 pipelines ETL. Chaque pipeline vérifie le volume, le schéma et la couverture avant mise en production.',
+      '23 modules d’import. Chacun vérifie le volume, le schéma et la couverture avant mise en production.',
       'API FastAPI sur PostgreSQL/PostGIS, avec authentification, quotas et erreurs normalisées.',
-      'Frontend SvelteKit 5 déployé sur Cloudflare Workers ; API conteneurisée sur mon homelab et publiée par tunnel sortant.',
+      'Site SvelteKit et API auto-hébergés sur mon Proxmox (base de travail et site public séparés), publiés par Cloudflare Tunnel.',
       'CI/CD GitHub Actions sur runner auto-hébergé. Les images sont versionnées et le retour arrière est testé.',
     ],
     results: [
-      'Instance publique active sur la Loire-Atlantique et la Vendée.',
-      'Matrice de qualité documentée pour les 21 pipelines et 6 proxys de données.',
+      'Site public en ligne sur toute la France, sur datacommune.fr.',
+      'Chaque source affiche sa licence, sa période, sa date d’import et ses limites.',
       'Fiches Commune rendues côté serveur et indexables par les moteurs de recherche.',
     ],
     limits: [
-      'Le périmètre France entière est une cible d’architecture, pas le volume de la démo publique.',
       'La facturation est volontairement désactivée tant que la qualité des données et l’usage terrain ne sont pas validés.',
     ],
     image: '/projects/datacommune-homepage.png',
@@ -41,9 +40,75 @@ export const projects = [
     external: { href: 'https://datacommune.fr', label: 'Ouvrir DataCommune' },
   },
   {
+    slug: 'homelab',
+    name: 'Homelab',
+    number: '02',
+    status: 'Exploité 24/7',
+    meta: 'Infrastructure personnelle · 2024 →',
+    summary:
+      'Mon infrastructure personnelle : des services migrés progressivement vers de l’IaC, avec des sauvegardes testées.',
+    outcome:
+      'Deux nœuds Proxmox et une vingtaine de LXC, dont quatorze décrits par Terraform et configurés avec Ansible. Les données critiques suivent une stratégie 3-2-1 dont la restauration est testée.',
+    tags: ['Proxmox', 'Terraform', 'Ansible', 'Tailscale', 'SOPS'],
+    facts: [
+      { value: '14', label: 'LXC en IaC' },
+      { value: '3-2-1', label: 'sauvegardes' },
+      { value: '24/7', label: 'exploitation' },
+    ],
+    challenge:
+      'Reconstruire une infrastructure devenue hétérogène sans perdre les données, tout en gardant un retour arrière possible à chaque migration.',
+    work: [
+      'Terraform est la source de vérité ; la documentation est générée depuis le code.',
+      'Migration service par service, avec test de restauration et observation avant de retirer l’ancien service.',
+      'Accès distant par Tailscale, authentification par passkey. L’exposition publique est en cours de retrait.',
+      'Observabilité centralisée, durcissement SSH et secrets chiffrés avec SOPS/age.',
+    ],
+    results: [
+      'Quatorze conteneurs déclarés en IaC, protégés contre la suppression accidentelle.',
+      'Sauvegardes locales et hors site ; exercices de restauration documentés.',
+      'Bascule LAN-only en cours, par vagues, avec contrôles fonctionnels avant chaque étape.',
+    ],
+    limits: [
+      'Un seul nœud Proxmox porte l’essentiel de la charge : les sauvegardes sont testées, la haute disponibilité ne l’est pas.',
+      'Le dépôt et la topologie détaillée restent privés pour ne pas exposer les accès internes.',
+    ],
+  },
+  {
+    slug: 'automatisation-ad',
+    name: 'Automatisation AD',
+    number: '03',
+    status: 'Utilisé en entreprise',
+    meta: 'PowerShell · 2025',
+    summary:
+      'Trois outils PowerShell pour des opérations Active Directory répétitives chez Equans, où chaque écriture doit être contrôlée.',
+    outcome:
+      'Les outils couvrent la gestion en masse, l’audit des droits et les sorties de personnel. Chaque opération sensible passe par une simulation et une sauvegarde avant écriture.',
+    tags: ['PowerShell', 'Active Directory', 'IAM', 'Guardrails'],
+    facts: [
+      { value: '3', label: 'outils ciblés' },
+      { value: '21 000+', label: 'postes dans l’environnement' },
+      { value: '100 %', label: 'simulation avant écriture' },
+    ],
+    challenge:
+      'Automatiser sans élargir les privilèges ni transformer une erreur de saisie en modification massive.',
+    work: [
+      'Un mode simulation montre les changements avant de les appliquer.',
+      'Exports de contrôle et sauvegardes avant les opérations sensibles.',
+      'Code revu par un développeur, périmètre d’action volontairement restreint.',
+    ],
+    results: [
+      'Les opérations répétitives passent par trois outils au lieu de manipulations manuelles.',
+      'Les audits de droits et les sorties de personnel sont mieux tracés.',
+    ],
+    limits: [
+      'Le code et les données restent privés car ils appartiennent au contexte d’entreprise.',
+      'L’outil assiste la décision ; il ne remplace ni la validation humaine ni les contrôles natifs.',
+    ],
+  },
+  {
     slug: 'hexalith',
     name: 'Hexalith',
-    number: '02',
+    number: '04',
     status: 'Lab documenté',
     meta: 'GitOps & IAM · 2026',
     summary:
@@ -77,72 +142,6 @@ export const projects = [
     imageAlt: 'Pipeline Terraform Hexalith réussi dans GitHub Actions',
     gallery: [
       { src: '/projects/hexalith-sso.png', alt: 'Connexion GLPI proposée par le fournisseur d’identité Authentik' },
-    ],
-  },
-  {
-    slug: 'homelab',
-    name: 'Homelab',
-    number: '03',
-    status: 'Exploité 24/7',
-    meta: 'Infrastructure personnelle · 2024 →',
-    summary:
-      'Mon infrastructure personnelle : des services migrés progressivement vers de l’IaC, avec des sauvegardes testées.',
-    outcome:
-      'Treize LXC sont décrits par Terraform et configurés avec Ansible. Les données critiques suivent une stratégie 3-2-1 dont la restauration est testée.',
-    tags: ['Proxmox', 'Terraform', 'Ansible', 'Tailscale', 'SOPS'],
-    facts: [
-      { value: '13', label: 'LXC en IaC' },
-      { value: '3-2-1', label: 'sauvegardes' },
-      { value: '24/7', label: 'exploitation' },
-    ],
-    challenge:
-      'Reconstruire une infrastructure devenue hétérogène sans perdre les données, tout en gardant un retour arrière possible à chaque migration.',
-    work: [
-      'Terraform est la source de vérité ; la documentation est générée depuis le code.',
-      'Migration service par service, avec test de restauration et observation avant de retirer l’ancien service.',
-      'Accès distant par Tailscale, authentification par passkey. L’exposition publique est en cours de retrait.',
-      'Observabilité centralisée, durcissement SSH et secrets chiffrés avec SOPS/age.',
-    ],
-    results: [
-      'Treize conteneurs déclarés en IaC, protégés contre la suppression accidentelle.',
-      'Sauvegardes locales et hors site ; exercices de restauration documentés.',
-      'Bascule LAN-only en cours, par vagues, avec contrôles fonctionnels avant chaque étape.',
-    ],
-    limits: [
-      'Un seul nœud Proxmox porte l’essentiel de la charge : les sauvegardes sont testées, la haute disponibilité ne l’est pas.',
-      'Le dépôt et la topologie détaillée restent privés pour ne pas exposer les accès internes.',
-    ],
-  },
-  {
-    slug: 'automatisation-ad',
-    name: 'Automatisation AD',
-    number: '04',
-    status: 'Utilisé en entreprise',
-    meta: 'PowerShell · 2025',
-    summary:
-      'Trois outils PowerShell pour des opérations Active Directory répétitives chez Equans, où chaque écriture doit être contrôlée.',
-    outcome:
-      'Les outils couvrent la gestion en masse, l’audit des droits et les sorties de personnel. Chaque opération sensible passe par une simulation et une sauvegarde avant écriture.',
-    tags: ['PowerShell', 'Active Directory', 'IAM', 'Guardrails'],
-    facts: [
-      { value: '3', label: 'outils ciblés' },
-      { value: '25 000+', label: 'postes dans l’environnement' },
-      { value: '100 %', label: 'simulation avant écriture' },
-    ],
-    challenge:
-      'Automatiser sans élargir les privilèges ni transformer une erreur de saisie en modification massive.',
-    work: [
-      'Un mode simulation montre les changements avant de les appliquer.',
-      'Exports de contrôle et sauvegardes avant les opérations sensibles.',
-      'Code revu par un développeur, périmètre d’action volontairement restreint.',
-    ],
-    results: [
-      'Les opérations répétitives passent par trois outils au lieu de manipulations manuelles.',
-      'Les audits de droits et les sorties de personnel sont mieux tracés.',
-    ],
-    limits: [
-      'Le code et les données restent privés car ils appartiennent au contexte d’entreprise.',
-      'L’outil assiste la décision ; il ne remplace ni la validation humaine ni les contrôles natifs.',
     ],
   },
 ];
