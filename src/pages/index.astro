@@ -78,7 +78,7 @@ const skills = ['Active Directory', 'Entra ID', 'Intune', 'Microsoft 365', 'Powe
               <li><strong>Auto-hébergé</strong> sur mon Proxmox, CI/CD GitHub Actions avec retour arrière testé.</li>
             </ul>
             <div class="feature-links">
-              <a class="btn btn-primary" href={featured.external.href} target="_blank" rel="noopener">Ouvrir datacommune.fr</a>
+              <a class="btn btn-primary" href={featured.external?.href ?? 'https://datacommune.fr'} target="_blank" rel="noopener">Ouvrir datacommune.fr</a>
               <a class="text-link" href={`/projets/${featured.slug}/`}>Lire l’étude de cas →</a>
             </div>
           </div>
